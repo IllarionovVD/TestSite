@@ -3,6 +3,7 @@
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <Name>TestSite</Name>
     <RootNamespace>TestSite</RootNamespace>
+    <InterpreterId>MSBuild|env|$(MSBuildProjectFullPath)</InterpreterId>
   </PropertyGroup>
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -29,6 +30,13 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="djangoApp\admin.py" />
+    <Compile Include="djangoApp\apps.py" />
+    <Compile Include="djangoApp\migrations\__init__.py" />
+    <Compile Include="djangoApp\models.py" />
+    <Compile Include="djangoApp\tests.py" />
+    <Compile Include="djangoApp\views.py" />
+    <Compile Include="djangoApp\__init__.py" />
     <Compile Include="manage.py" />
     <Compile Include="TestSite\__init__.py" />
     <Compile Include="TestSite\settings.py" />
@@ -36,10 +44,26 @@
     <Compile Include="TestSite\wsgi.py" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="djangoApp\templates\djangoApp\index.html" />
     <Content Include="requirements.txt" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="djangoApp\" />
+    <Folder Include="djangoApp\migrations\" />
+    <Folder Include="djangoApp\templates\" />
+    <Folder Include="djangoApp\templates\djangoApp\" />
     <Folder Include="TestSite\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Interpreter Include="env\">
+      <Id>env</Id>
+      <Version>3.7</Version>
+      <Description>env (Python 3.7 (64-bit))</Description>
+      <InterpreterPath>Scripts\python.exe</InterpreterPath>
+      <WindowsInterpreterPath>Scripts\pythonw.exe</WindowsInterpreterPath>
+      <PathEnvironmentVariable>PYTHONPATH</PathEnvironmentVariable>
+      <Architecture>X64</Architecture>
+    </Interpreter>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.Django.targets" />
   <!-- Specify pre- and post-build commands in the BeforeBuild and 
