@@ -1,0 +1,20 @@
+﻿{%extends 'djangoApp/base.html' %}
+
+{%block title %} Sith page {% endblock %}
+
+
+{%block content %}
+<a href="{% url 'sith_info' %}"> Additional info </a>
+    <form action="{% url 'submit_sith' %}" method="post">
+        {% csrf_token %}
+   <strong> Выберите себя из списка: </strong>
+
+<select name="chosen_sith_id">
+{% for sith in siths %}
+<option value="{{ sith.id }}">{{ sith.name }}</option>
+{% endfor %}
+</select>
+
+        <button type="submit">Выбрать </button>
+        </form>
+{% endblock%}

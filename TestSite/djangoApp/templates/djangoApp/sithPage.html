@@ -1,0 +1,77 @@
+﻿{%extends 'djangoApp/base.html' %}
+
+{%block title %} Sith page {% endblock %}
+
+
+{%block content %}
+<a href="{% url 'sith_info' %}"> Additional info </a>
+<form action="{% url 'submit_sith' %}" method="post">
+    {% csrf_token %}
+    <strong> Выберите себя из списка: </strong>
+
+    <select name="chosen_sith_id">
+        {% for sith in siths %}
+            <option value="{{ sith.id }}">{{ sith.name }}</option>
+        {% endfor %}
+    </select>
+
+    <button type="submit">Выбрать </button>
+</form>
+
+<br />
+
+Рекруты планеты {{planet_name}}<br />
+{% if recruit_count < 3 %}
+<table border="1">
+<tr>
+    <th>Имя</th>
+    <th>Возраст</th>
+    <th>Ответы</th>
+    <th></th>
+</tr>
+{% for r in allowed_recruits%}{% for ans in answers %}
+{% if forloop.counter == forloop.parentloop.counter %}
+<tr>
+    <td>{{r.name}}</td>
+    <td>{{r.age}}</td>
+    <td>
+        {{ans}}
+    </td>
+    <td>
+        <form action="{% url 'accept_recruit' sith.id r.id %}">
+            <button type="submit">Принять</button>
+        </form>
+    </td>
+</tr>
+{% endif %}
+{% endfor %}{% endfor %}
+
+</table>
+
+
+{% else %}
+<strong> Набрано максимальное количество рекрутов </strong>
+
+<table border="1">
+<tr>
+    <th>Имя</th>
+    <th>Возраст</th>
+    <th>Ответы</th>
+
+</tr>
+{% for r in allowed_recruits%}{% for ans in answers %}
+{% if forloop.counter == forloop.parentloop.counter %}
+<tr>
+    <td>{{r.name}}</td>
+    <td>{{r.age}}</td>
+    <td>
+        {{ans}}
+    </td>
+</tr>
+{% endif %}
+{% endfor %}{% endfor %}
+
+</table>
+{% endif %}
+
+{% endblock%}

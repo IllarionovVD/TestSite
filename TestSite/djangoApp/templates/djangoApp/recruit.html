@@ -1,0 +1,30 @@
+﻿{%extends 'djangoApp/base.html' %}
+
+{%block title %} Recruit page {% endblock %}
+
+
+{%block content %}
+
+    <form action="{% url 'save_recruit'  %}" method="post">
+        {% csrf_token %}
+        <strong>Введите свои данные и ответьте на вопросы:</strong><br />
+        <input type="text" name="name" placeholder="Имя" /> <br />
+
+        <select name="planet">
+            {% for p in planets %}
+            <option value="{{ p.id }}">{{ p.name }}</option>
+            {% endfor %}
+        </select>
+        <br />
+
+        <input type="text" name="age" placeholder="Возраст" /> <br />
+        <input type="text" name="email" placeholder="Email" /> <br />
+
+        {% for q in questions %}
+            <label>{{ q.number }}) {{ q.text }}</label>
+            <input type="checkbox" name="answers[]" value="{{ q.id }}" /><br />
+        {% endfor %}
+        <button type="submit">Ok </button>
+    </form>
+
+{% endblock%}

@@ -1,0 +1,9 @@
+﻿{%extends 'djangoApp/base.html' %}
+
+{%block title %} Home {% endblock %}
+
+
+{%block content %}
+<h3 align ="center"> <a href="{% url 'sith' %}">Для Ситхов</a> 
+    | <a href="{% url 'recruit' %}">Для рекрутов</a>  </h3>
+{% endblock%}

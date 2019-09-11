@@ -22,7 +22,14 @@ from django.conf.urls import include, url
 import djangoApp.views
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    url(r'^$', djangoApp.views.index, name='index'),
-    url(r'^home$', djangoApp.views.index, name='home'),
+    path('admin/', admin.site.urls, name= 'admin'),
+    path('', djangoApp.views.index, name='index'),
+    path('home', djangoApp.views.index, name='home'),
+    path('sith/',  djangoApp.views.sith, name='sith'),
+    path('recruit/',  djangoApp.views.recruit, name='recruit'),
+    path('sith/submit', djangoApp.views.submit_sith, name = 'submit_sith'),
+    path('sith/<int:sith_id>', djangoApp.views.current_sith, name = 'current_sith'),
+    path('recruit/save', djangoApp.views.save_recruit, name='save_recruit'),
+    path('sith/<int:sith_id>/accept/<int:recruit_id>', djangoApp.views.accept_recruit, name = 'accept_recruit'),
+    path('sith/info',  djangoApp.views.sith_info, name='sith_info'),
 ]

@@ -44,7 +44,12 @@
     <Compile Include="TestSite\wsgi.py" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="djangoApp\templates\djangoApp\index.html" />
+    <Content Include="djangoApp\templates\djangoApp\base.html" />
+    <Content Include="djangoApp\templates\djangoApp\home.html" />
+    <Content Include="djangoApp\templates\djangoApp\sith.html" />
+    <Content Include="djangoApp\templates\djangoApp\sithPage.html" />
+    <Content Include="djangoApp\templates\djangoApp\recruit.html" />
+    <Content Include="djangoApp\templates\djangoApp\sithInfo.html" />
     <Content Include="requirements.txt" />
   </ItemGroup>
   <ItemGroup>

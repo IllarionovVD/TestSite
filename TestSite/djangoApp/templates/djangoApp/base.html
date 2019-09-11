@@ -1,0 +1,15 @@
+﻿<html lang="ru" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+     <meta charset="utf-8" />
+    <title>{% block title %} Title {% endblock%}</title>
+</head>
+
+<body>
+     <ul ><li><a href="{% url 'home' %}">Home</a></li> 
+    <li><a href="/admin/">Fast Admin</a></li>
+     </ul>
+    <hr />
+{% block content %} {% endblock%}
+
+</body>
+</html>
